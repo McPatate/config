@@ -28,6 +28,7 @@ Plug 'plasticboy/vim-markdown'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
@@ -38,7 +39,7 @@ set hidden
 set nobackup
 set nowritebackup
 
-set cmdheight=2
+" set cmdheight=2
 
 set updatetime=300
 
@@ -58,6 +59,9 @@ nmap <silent> <F2> <Plug>(lcn-rename)
 
 " Quick save
 nmap <leader>w :w<CR>
+
+" Open file
+nnoremap <Leader>o :CtrlP<CR>
 
 set laststatus=2
 set noshowmode
@@ -124,4 +128,16 @@ endfunction
 
 " Use auocmd to force lightline update.
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+
+set relativenumber
+
+" <leader>s for Rg search
+noremap <leader>s :Rg
+let g:fzf_layout = { 'down': '~20%' }
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
 
