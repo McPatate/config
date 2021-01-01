@@ -1,3 +1,5 @@
+set shell=/bin/bash
+let mapleader = "\<Space>"
 
 call plug#begin('~/.config/nvim/plugged')
 
@@ -28,6 +30,8 @@ Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -63,4 +67,6 @@ set noshowmode
 filetype plugin indent on
 
 syntax on
+
+nnoremap <leader><leader> <c-^>
 
