@@ -61,6 +61,9 @@ nmap <silent>K <Plug>(lcn-hover)
 nmap <silent> gd <Plug>(lcn-definition)
 nmap <silent> <F2> <Plug>(lcn-rename)
 
+" Quick save
+nmap <leader>w :w<CR>
+
 set laststatus=2
 set noshowmode
 
@@ -69,4 +72,5 @@ filetype plugin indent on
 syntax on
 
 nnoremap <leader><leader> <c-^>
+
 
