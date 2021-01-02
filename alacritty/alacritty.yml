@@ -5,6 +5,10 @@ shell:
     - -c
     - "tmux attach || tmux"
 
+# Open a new window shortcut
+key_bindings:
+- { key: N, mods: Command, action: SpawnNewInstance }
+
 # Base16 Brewer 256 - alacritty color config
 # Timothée Poisot (http://github.com/tpoisot)
 colors:
