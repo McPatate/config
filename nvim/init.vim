@@ -54,8 +54,6 @@ let g:rustfmt_fail_silently = 0
 "     \ 'python': ['/Users/mc/Library/Python/3.8/bin/pyls'],
 "     \ }
 
-" let g:ale_completion_enabled = 1
-
 " note that if you are using Plug mapping you should not use `noremap` mappings.
 nmap <F5> <Plug>(lcn-menu)
 " Or map each action separately
@@ -65,9 +63,6 @@ nmap <silent> <F2> <Plug>(lcn-rename)
 
 " Quick save
 nmap <leader>w :w<CR>
-
-" Open file
-nnoremap <Leader>o :CtrlP<CR>
 
 set laststatus=2
 set noshowmode
