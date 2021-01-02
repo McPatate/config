@@ -7,17 +7,6 @@ Plug 'chriskempson/base16-vim'
 
 Plug 'itchyny/lightline.vim'
 
-Plug 'dense-analysis/ale'
-
-Plug 'davidhalter/jedi-vim'
-
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-
-Plug 'dag/vim-fish'
-
 Plug 'rust-lang/rust.vim'
 
 Plug 'cespare/vim-toml'
@@ -39,16 +28,33 @@ set hidden
 set nobackup
 set nowritebackup
 
-" set cmdheight=2
+set cmdheight=2
 
 set updatetime=300
 
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    \ 'python': ['/Users/mc/Library/Python/3.8/bin/pyls'],
-    \ }
+" deal with colors
+if !has('gui_running')
+  set t_Co=256
+endif
+if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
+  " screen does not (yet) support truecolor
+  set termguicolors
+endif
+set background=dark
+let base16colorspace=256
+colorscheme base16-brewer
 
-let g:ale_completion_enabled = 1
+" rust
+let g:rustfmt_autosave = 1
+let g:rustfmt_emit_files = 1
+let g:rustfmt_fail_silently = 0
+
+" let g:LanguageClient_serverCommands = {
+"     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+"     \ 'python': ['/Users/mc/Library/Python/3.8/bin/pyls'],
+"     \ }
+
+" let g:ale_completion_enabled = 1
 
 " note that if you are using Plug mapping you should not use `noremap` mappings.
 nmap <F5> <Plug>(lcn-menu)
@@ -133,11 +139,23 @@ set relativenumber
 
 " <leader>s for Rg search
 noremap <leader>s :Rg
-let g:fzf_layout = { 'down': '~20%' }
+let g:fzf_layout = { 'down': '~24%' }
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
+
+" " Copy to clipboard
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+nnoremap  <leader>yy  "+yy
+
+" " Paste from clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
 
