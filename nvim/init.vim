@@ -21,6 +21,8 @@ Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+Plug 'JuliaEditorSupport/julia-vim'
+
 call plug#end()
 
 set hidden
