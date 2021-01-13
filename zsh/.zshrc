@@ -1,5 +1,5 @@
 alias rose="/usr/bin/arch -x86_64"
-alias ls="exa -lgb --git"
+alias ll="exa -lgb --git"
 alias la="exa -lagb --git"
 alias grep="grep --color"
 
@@ -35,4 +35,4 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
         eval "$("$BASE16_SHELL/profile_helper.sh")"
 
 uptime
-
+base16_helios
