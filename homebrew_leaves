@@ -1,8 +1,11 @@
 bat
 cargo-instruments
+diff-so-fancy
+exa
 fd
 fzf
 htop
+jq
 libxmu
 neovim
 nmap
