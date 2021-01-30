@@ -1,6 +1,9 @@
 # Mc's configuration
 
 
+[Pimp my *nix](https://luc-sydney-georges.medium.com/pimp-my-nix-2e74b229a080)
+
+
 ## Installation
 
 ```sh
