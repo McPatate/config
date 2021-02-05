@@ -23,6 +23,8 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'JuliaEditorSupport/julia-vim'
 
+Plug 'tpope/vim-fugitive'
+
 call plug#end()
 
 set hidden
@@ -65,6 +67,10 @@ nmap <silent> <F2> <Plug>(lcn-rename)
 
 " Quick save
 nmap <leader>w :w<CR>
+
+" Quick vsplit
+nmap <leader>v :vsplit<CR>
+
 
 set laststatus=2
 set noshowmode
@@ -118,11 +124,13 @@ endfunction
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ],
+      \             [ 'gitbranch', 'readonly' ] ]
       \ },
       \ 'component_function': {
       \   'filename': 'LightlineFilename',
-      \   'cocstatus': 'coc#status'
+      \   'cocstatus': 'coc#status',
+      \   'gitbranch': 'FugitiveHead'
       \ },
       \ }
 function! LightlineFilename()
@@ -135,7 +143,7 @@ autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 set relativenumber
 
 " <leader>s for Rg search
-noremap <leader>s :Rg
+noremap <leader>s :Rg<CR>
 let g:fzf_layout = { 'down': '~24%' }
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
@@ -143,6 +151,9 @@ command! -bang -nargs=* Rg
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
+
+" " Open file in adjacent buffer
+nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " " Copy to clipboard
 vnoremap  <leader>y  "+y
