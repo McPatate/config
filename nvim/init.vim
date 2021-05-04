@@ -3,11 +3,14 @@ let mapleader = "\<Space>"
 
 call plug#begin('~/.config/nvim/plugged')
 
+" Plug 'preservim/nerdtree'
+
 Plug 'chriskempson/base16-vim'
 
 Plug 'itchyny/lightline.vim'
 
 Plug 'rust-lang/rust.vim'
+" Plug 'fannheyward/coc-rust-analyzer'
 
 Plug 'cespare/vim-toml'
 
@@ -16,6 +19,9 @@ Plug 'stephpy/vim-yaml'
 Plug 'plasticboy/vim-markdown'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-tsserver'
+Plug 'neoclide/coc-eslint'
+Plug 'neoclide/coc-prettier'
 
 Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -96,6 +102,9 @@ function! s:show_documentation()
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
+
+" Format Typescript files
+autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
