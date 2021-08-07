@@ -105,6 +105,7 @@ endfunction
 
 " Format Typescript files
 autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
+autocmd FileType typescript setlocal shiftwidth=2 softtabstop=2 expandtab
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -149,7 +150,9 @@ endfunction
 " Use auocmd to force lightline update.
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
-set relativenumber
+
+set number relativenumber
+set nu rnu
 
 " <leader>s for Rg search
 noremap <leader>s :Rg<CR>

@@ -23,6 +23,7 @@ alias gst='git status'
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=/Users/mc/Library/Python/3.8/bin:$PATH
 export PATH=/Applications/Julia-1.5.app/Contents/Resources/julia/bin:$PATH
+export PATH=/Users/mc/go/bin:$PATH
 
 
 # Base16 Shell
@@ -83,3 +84,4 @@ kitty + complete setup zsh | source /dev/stdin
 
 
 uptime
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
