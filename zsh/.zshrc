@@ -13,7 +13,7 @@ alias gcb='git checkout -b'
 alias gd='git diff'
 alias glg='git log --graph --abbrev-commit'
 alias gldog='git log --all --decorate --oneline --graph'
-alias gpl='git pull'
+alias gpl='git pull --rebase'
 alias gps='git push'
 alias gst='git status'
 
