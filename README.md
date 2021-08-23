@@ -30,6 +30,9 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 # Install all vim plugins
 nvim +PlugInstall +qall
 
+# vscode remove applepressandhold
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+
 # tldr
 cargo install tealdeer
 tldr --update
