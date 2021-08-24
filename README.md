@@ -19,6 +19,9 @@ brew install --cask kitty
 # base16 shell
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 
+# fzf install after brew install
+$(brew --prefix)/opt/fzf/install
+
 # create symbolic links for config ; edit script if need be
 chmod +x sl.sh
 ./sl.sh
