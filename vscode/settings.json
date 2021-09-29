@@ -1,0 +1,16 @@
+{
+	"workbench.colorTheme": "Default Dark+",
+	"vim.easymotion": true,
+	"vim.incsearch": true,
+	"vim.useSystemClipboard": true,
+	"vim.useCtrlKeys": false,
+	"vim.hlsearch": true,
+	"vim.normalModeKeyBindingsNonRecursive": [
+		{
+			"before": ["<leader>", "w"],
+			"commands": ["workbench.action.files.save"]
+		}
+	],
+	"vim.leader": "<space>",
+	"editor.fontSize": 17
+}
