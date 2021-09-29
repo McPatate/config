@@ -11,6 +11,5 @@
 			"commands": ["workbench.action.files.save"]
 		}
 	],
-	"vim.leader": "<space>",
-	"editor.fontSize": 17
+	"vim.leader": "<space>"
 }
