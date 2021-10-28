@@ -11,5 +11,8 @@
 			"commands": ["workbench.action.files.save"]
 		}
 	],
-	"vim.leader": "<space>"
+	"vim.leader": "<space>",
+	"redhat.telemetry.enabled": false,
+	"git.confirmSync": false,
+	"git.autofetch": true
 }
