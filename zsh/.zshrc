@@ -1,8 +1,8 @@
 # Aliases
 
 alias rose="/usr/bin/arch -x86_64"
-alias ll="exa -lgb --git"
-alias la="exa -lagb --git"
+alias ll="exa -lgb --git --group-directories-first"
+alias la="exa -lagb --git --group-directories-first"
 alias grep="grep --color"
 
 alias v='nvim'
