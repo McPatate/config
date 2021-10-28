@@ -31,6 +31,8 @@ Plug 'JuliaEditorSupport/julia-vim'
 
 Plug 'tpope/vim-fugitive'
 
+Plug 'google/vim-jsonnet'
+
 call plug#end()
 
 set hidden
