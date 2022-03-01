@@ -13,4 +13,5 @@ neovim
 nmap
 node
 ripgrep
+starship
 telnet

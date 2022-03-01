@@ -14,5 +14,9 @@
 	"vim.leader": "<space>",
 	"redhat.telemetry.enabled": false,
 	"git.confirmSync": false,
-	"git.autofetch": true
+	"git.autofetch": true,
+	"explorer.confirmDragAndDrop": false,
+	"explorer.confirmDelete": false,
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"editor.formatOnSave": "true"
 }

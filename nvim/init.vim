@@ -79,6 +79,8 @@ nmap <leader>w :w<CR>
 " Quick vsplit
 nmap <leader>v :vsplit<CR>
 
+" Disable automatic folding
+set nofoldenable
 
 set laststatus=2
 set noshowmode

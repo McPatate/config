@@ -1,13 +1,13 @@
 shell:
-  program: /usr/local/bin/fish
-  args:
-    - -l
-    - -c
-    - "tmux attach || tmux"
+  program: /usr/bin/zsh
+#   args:
+#     - -l
+#     - -c
+#     - "tmux attach || tmux"
 
-# Open a new window shortcut
-key_bindings:
-- { key: N, mods: Command, action: SpawnNewInstance }
+# Open a new window shortcut - Mac
+# key_bindings:
+# - { key: N, mods: Command, action: SpawnNewInstance }
 
 # Base16 Brewer 256 - alacritty color config
 # Timothée Poisot (http://github.com/tpoisot)
@@ -53,4 +53,8 @@ colors:
     - { index: 21, color: '0xdadbdc' }
 
 
-background_opacity: 0.65
+window.opacity: 0.95
+
+key_bindings:
+  - { key: Up, mods: Control, action: None }
+  - { key: Down, mods: Control, action: None }
