@@ -33,6 +33,7 @@ export NVM_DIR="$HOME/.nvm"
 
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$(npm config get prefix)/bin:$PATH
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Mac Path
 # export PATH=/Users/mc/Library/Python/3.8/bin:$PATH
