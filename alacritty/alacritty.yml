@@ -52,6 +52,17 @@ colors:
     - { index: 20, color: '0x959697' }
     - { index: 21, color: '0xdadbdc' }
 
+font:
+  size: 11
+  normal:
+    family: InconsolataLGC Nerd Font
+    style: Regular
+  bold:
+    family: InconsolataLGC Nerd Font
+    style: Regular
+  italic:
+    family: InconsolataLGC Nerd Font
+    style: Regular
 
 window.opacity: 0.95
 

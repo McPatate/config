@@ -11,6 +11,7 @@ ln -s $CONFIG_HOME/nvim/init.vim ~/.config/nvim/init.vim
 # ln -s $CONFIG_HOME/fish/config.fish ~/.config/fish/config.fish
 # ln -s $CONFIG_HOME/kitty/kitty.conf ~/.config/kitty/kitty.conf
 ln -s $CONFIG_HOME/zsh/.zshrc ~/.zshrc
+ln -s $CONFIG_HOME/starship/starship.toml ~/.config/starship.toml
 # Mac
 # rm ~/Library/Application\ Support/Code/User/settings.json
 # ln -s $CONFIG_HOME/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
