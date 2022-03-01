@@ -24,4 +24,7 @@
 	"explorer.confirmDelete": false,
 	"typescript.updateImportsOnFileMove.enabled": "always",
 	"editor.formatOnSave": true
+	"svelte.enable-ts-plugin": true,
+	"explorer.confirmDelete": false,
+	"python.venvPath": "~/.venv"
 }
