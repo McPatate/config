@@ -59,10 +59,10 @@ font:
     style: Regular
   bold:
     family: InconsolataLGC Nerd Font
-    style: Regular
+    style: Bold
   italic:
     family: InconsolataLGC Nerd Font
-    style: Regular
+    style: Italic
 
 window.opacity: 0.95
 
