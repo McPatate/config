@@ -7,8 +7,13 @@
 	"vim.hlsearch": true,
 	"vim.normalModeKeyBindingsNonRecursive": [
 		{
-			"before": ["<leader>", "w"],
-			"commands": ["workbench.action.files.save"]
+			"before": [
+				"<leader>",
+				"w"
+			],
+			"commands": [
+				"workbench.action.files.save"
+			]
 		}
 	],
 	"vim.leader": "<space>",
@@ -18,5 +23,5 @@
 	"explorer.confirmDragAndDrop": false,
 	"explorer.confirmDelete": false,
 	"typescript.updateImportsOnFileMove.enabled": "always",
-	"editor.formatOnSave": "true"
+	"editor.formatOnSave": true
 }
