@@ -74,6 +74,13 @@ compinit
 
 # k8s stuff
 alias k=kubectl
+alias kgc='kubectl get cm '
+alias kgp='kubectl get pods '
+alias kgs='kubectl get svc '
+alias kdp='kubectl describe pod '
+alias keit='kubectl exec -it '
+alias kl='kubectl logs '
+alias klf='kubectl logs -f '
 source <(kubectl completion zsh)
 complete -F __start_kubectl k
 
