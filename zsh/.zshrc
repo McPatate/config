@@ -7,10 +7,11 @@ alias grep="grep --color"
 
 alias v='nvim'
 
-alias ga='git add .'
-alias gcm='git commit -m '
+alias ga='git add'
 alias gc='git checkout'
 alias gcb='git checkout -b'
+alias gcm='git commit -m '
+alias gcmae='git commit --amend --no-edit'
 alias gd='git diff'
 alias glg='git log --graph --abbrev-commit'
 alias gldog='git log --all --decorate --oneline --graph'
@@ -44,6 +45,8 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Linux Path
 export PATH=$HOME/.local/bin:$PATH
+export PATH=/usr/local/go/bin:$PATH
+export PATH=$HOME/go/bin:$PATH
 
 # Base16 Shell
 
