@@ -23,11 +23,6 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 
 Plug 'rust-lang/rust.vim'
-Plug 'simrat39/rust-tools.nvim'
-
-Plug 'jose-elias-alvarez/null-ls.nvim'
-" Plug 'jose-elias-alvarez/typescript.nvim'
-Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
 
 Plug 'cespare/vim-toml'
 
@@ -44,6 +39,11 @@ Plug 'JuliaEditorSupport/julia-vim'
 Plug 'tpope/vim-fugitive'
 
 Plug 'google/vim-jsonnet'
+
+Plug 'hashivim/vim-terraform'
+
+" Debugger
+Plug 'mfussenegger/nvim-dap'
 
 call plug#end()
 
@@ -156,6 +156,9 @@ command! -bang -nargs=* Rg
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
 
+" Ignore case in search
+set ic
+
 " " Open file in adjacent buffer
 nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
@@ -174,67 +177,8 @@ vnoremap <leader>P "+P
 " Enable type inlay hints
 autocmd CursorHold,CursorHoldI *.rs :lua require'lsp_extensions'.inlay_hints{ only_current_line = true }
 
-lua <<EOF
-local nvim_lsp = require'lspconfig'
-
-local opts = {
-    tools = { -- rust-tools options
-        autoSetHints = true,
-        hover_with_actions = true,
-        inlay_hints = {
-            show_parameter_hints = false,
-            parameter_hints_prefix = "",
-            other_hints_prefix = "",
-        },
-    },
-
-    -- all the opts to send to nvim-lspconfig
-    -- these override the defaults set by rust-tools.nvim
-    -- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
-    server = {
-        -- on_attach is a callback called when the language server attachs to the buffer
-        -- on_attach = on_attach,
-        settings = {
-            -- to enable rust-analyzer settings visit:
-            -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
-            ["rust-analyzer"] = {
-                -- enable clippy on save
-                checkOnSave = {
-                    command = "clippy"
-                },
-            }
-        }
-    },
-}
-
-require('rust-tools').setup(opts)
-
--- local null_ls = require('null-ls')null_ls.setup({
---     sources = {
---         null_ls.builtins.diagnostics.eslint_d,
---         null_ls.builtins.code_actions.eslint_d,
---         null_ls.builtins.formatting.prettier
---     },
---     on_attach = on_attach
--- })
---
--- require('typescript').setup({
---     on_attach = function(client, bufnr)
---         client.resolved_capabilities.document_formatting = false
---         client.resolved_capabilities.document_range_formatting = false
---
--- 	local ts_utils = require("nvim-lsp-ts-utils")
---         ts_utils.setup({})
---         ts_utils.setup_client(client)
---
--- 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>")
---         vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
---         vim.api.nvim_buf_set_keymap(bufnr, "n", "go", ":TSLspImportAll<CR>")
--- 	on_attach(client, bufnr)
---     end,
--- })
-
-EOF
+" Terraform
+autocmd BufWritePre *.tf* :TerraformFmt
 
 " Setup Completion
 " See https://github.com/hrsh7th/nvim-cmp#basic-configuration
@@ -285,7 +229,7 @@ cmp.setup.cmdline(':', {
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
-vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<space>di', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
@@ -315,7 +259,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'rust_analyzer', 'tsserver' }
+local servers = { 'pyright', 'rust_analyzer', 'terraformls', 'tsserver' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
@@ -329,5 +273,70 @@ end
 -- Function signatures
 require'lsp_signature'.setup({}) -- no need to specify bufnr if you don't use toggle_key
 require('lsp_signature').status_line(max_width)
+EOF
+
+" Debugger
+lua <<EOF
+local dap = require('dap')
+
+dap.adapters.node2 = {
+  type = 'executable',
+  command = 'node',
+  args = {os.getenv('HOME') .. '/vscode-node-debug2/out/src/nodeDebug.js'},
+}
+
+dap.configurations.javascript = {
+  {
+    name = 'Launch',
+    type = 'node2',
+    request = 'launch',
+    program = '${file}',
+    cwd = vim.fn.getcwd(),
+    sourceMaps = true,
+    protocol = 'inspector',
+    console = 'integratedTerminal',
+    outFiles = {'${workspaceFolder}/dist/**/*.js'},
+  },
+  {
+    -- For this to work you need to make sure the node process is started with the `--inspect` flag.
+    name = 'Attach to process',
+    type = 'node2',
+    request = 'attach',
+    processId = require'dap.utils'.pick_process,
+  },
+}
+
+dap.configurations.typescript = {
+  {
+    name = 'Launch',
+    type = 'node2',
+    request = 'launch',
+    program = '${file}',
+    cwd = '${workspaceFolder}',
+    sourceMaps = true,
+    protocol = 'inspector',
+    console = 'externalTerminal',
+    outFiles = {'${workspaceFolder}/dist/**/*.js'},
+  },
+  {
+    -- For this to work you need to make sure the node process is started with the `--inspect` flag.
+    name = 'Attach to process',
+    type = 'node2',
+    request = 'attach',
+    processId = require'dap.utils'.pick_process,
+  },
+}
+
+dap.defaults.fallback.external_terminal = {
+  command = '/usr/bin/alacritty';
+  args = {'-e'};
+}
+
+local opts = { noremap=true, silent=true }
+vim.api.nvim_set_keymap('n', '<space>bp', "<cmd>lua require'dap'.toggle_breakpoint()<CR>", opts)
+vim.api.nvim_set_keymap('n', '<space>db', "<cmd>lua require'dap'.continue()<CR>", opts)
+vim.api.nvim_set_keymap('n', '<space>so', "<cmd>lua require'dap'.step_over()<CR>", opts)
+vim.api.nvim_set_keymap('n', '<space>si', "<cmd>lua require'dap'.step_into()<CR>", opts)
+vim.api.nvim_set_keymap('n', '<space>ro', "<cmd>lua require'dap'.repl.open()<CR>", opts)
 EOF
 
