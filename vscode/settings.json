@@ -1,9 +1,8 @@
 {
-	"workbench.colorTheme": "Default Dark+",
-	"vim.easymotion": true,
+	"workbench.colorTheme": "GitHub Dark Default",
 	"vim.incsearch": true,
 	"vim.useSystemClipboard": true,
-	"vim.useCtrlKeys": false,
+	"vim.useCtrlKeys": true,
 	"vim.hlsearch": true,
 	"vim.normalModeKeyBindingsNonRecursive": [
 		{
@@ -23,8 +22,9 @@
 	"explorer.confirmDragAndDrop": false,
 	"explorer.confirmDelete": false,
 	"typescript.updateImportsOnFileMove.enabled": "always",
-	"editor.formatOnSave": true
+	"editor.formatOnSave": true,
 	"svelte.enable-ts-plugin": true,
 	"explorer.confirmDelete": false,
-	"python.venvPath": "~/.venv"
+	"python.venvPath": "~/.venv",
+	"window.zoomLevel": 1
 }
