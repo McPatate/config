@@ -36,11 +36,16 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'JuliaEditorSupport/julia-vim'
 
-Plug 'tpope/vim-fugitive'
+" Plug 'airblade/vim-gitgutter'
 
 Plug 'google/vim-jsonnet'
 
 Plug 'hashivim/vim-terraform'
+
+" Svelte
+Plug 'othree/html5.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
 
 " Debugger
 Plug 'mfussenegger/nvim-dap'
@@ -77,6 +82,9 @@ let g:rustfmt_fail_silently = 0
 "     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
 "     \ 'python': ['/Users/mc/Library/Python/3.8/bin/pyls'],
 "     \ }
+
+" Svelte
+let g:svelte_preprocessors = ['typescript']
 
 " note that if you are using Plug mapping you should not use `noremap` mappings.
 nmap <F5> <Plug>(lcn-menu)
@@ -261,13 +269,30 @@ end
 -- map buffer local keybindings when the language server attaches
 local servers = { 'pyright', 'rust_analyzer', 'terraformls', 'tsserver' }
 for _, lsp in pairs(servers) do
-  require('lspconfig')[lsp].setup {
-    on_attach = on_attach,
-    flags = {
-      -- This will be the default in neovim 0.7+
-      debounce_text_changes = 150,
+  if lsp == "rust_analyzer" then
+    require('lspconfig')[lsp].setup {
+      on_attach = on_attach,
+      flags = {
+        -- This will be the default in neovim 0.7+
+        debounce_text_changes = 150,
+      },
+      settings = {
+        ["rust-analyzer"] = {
+          cargo = {
+            allFeatures = true,
+          },
+        },
+      },
     }
-  }
+  else
+    require('lspconfig')[lsp].setup {
+      on_attach = on_attach,
+      flags = {
+        -- This will be the default in neovim 0.7+
+        debounce_text_changes = 150,
+      }
+    }
+  end
 end
 
 -- Function signatures
