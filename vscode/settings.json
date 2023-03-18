@@ -1,4 +1,5 @@
 {
+	"python.formatting.provider": "black",
 	"workbench.colorTheme": "GitHub Dark Default",
 	"vim.incsearch": true,
 	"vim.useSystemClipboard": true,
@@ -26,5 +27,20 @@
 	"svelte.enable-ts-plugin": true,
 	"explorer.confirmDelete": false,
 	"python.venvPath": "~/.venv",
-	"window.zoomLevel": 1
+	"svelte.plugin.svelte.note-new-transformation": false,
+	"rust-analyzer.inlayHints.renderColons": false,
+	"rust-analyzer.inlayHints.chainingHints.enable": false,
+	"rust-analyzer.inlayHints.closingBraceHints.enable": false,
+	"rust-analyzer.inlayHints.parameterHints.enable": false,
+	"rust-analyzer.inlayHints.typeHints.enable": false,
+	"debug.allowBreakpointsEverywhere": true,
+	"window.zoomLevel": 1,
+	"vs-kubernetes": {
+		"vs-kubernetes.minikube-show-information-expiration": "2023-07-30T09:52:55.876Z"
+	},
+	"[python]": {
+		"editor.formatOnType": true
+	},
+	"editor.inlineSuggest.enabled": true,
+	"editor.lineNumbers": "relative"
 }
