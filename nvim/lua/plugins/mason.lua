@@ -8,6 +8,7 @@ return {
         "ruff-lsp",
         "rust-analyzer",
         "rustfmt",
+        "terraform-ls",
         "typescript-language-server",
       },
     },

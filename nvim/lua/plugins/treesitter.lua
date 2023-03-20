@@ -50,6 +50,7 @@ return {
         "query",
         "regex",
         "rust",
+        "terraform",
         "tsx",
         "typescript",
         "vim",
