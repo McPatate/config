@@ -18,6 +18,8 @@ ln -s $CONFIG_HOME/k9s/mocha.yml ~/.config/k9s/skin.yml
 # rm ~/Library/Application\ Support/Code/User/keybindings.json
 # ln -s $CONFIG_HOME/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
 # ln -s $CONFIG_HOME/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
+# defaults write -g KeyRepeat -int 1
+# defaults write -g InitialKeyRepeat -int 10
 # Linux
 rm $HOME/.config/Code/User/settings.json
 rm $HOME/.config/Code/User/keybindings.json
