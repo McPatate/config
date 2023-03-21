@@ -1,0 +1,19 @@
+[Unit]
+Description=Script to switch from light to dark based on sunrise data
+After=network-online.target
+ 
+[Service]
+Type=simple
+ 
+User=mc
+Group=mc
+ 
+ExecStart=python3 /home/mc/Documents/config/get_sunrise.py
+ 
+Restart=on-failure
+ 
+# Configures the time to wait before service is stopped forcefully.
+TimeoutStopSec=5
+ 
+[Install]
+WantedBy=multi-user.target
