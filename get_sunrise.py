@@ -72,8 +72,8 @@ def set_dark():
     )
     replace_in_file(f"{CONFIG_HOME}/bat/config", '--theme="OneHalfLight"', "")
     replace_in_file(f"{CONFIG_HOME}/nvim/lua/plugins/colorscheme.lua", "latte", "mocha")
-    Path("~/.config/k9s/skin.yml").unlink(missing_ok=True)
-    os.symlink(f"{CONFIG_HOME}/k9s/mocha.yml", "~/.config/k9s/skin.yml")
+    Path(f"{CONFIG_TARGET}/k9s/skin.yml").unlink(missing_ok=True)
+    os.symlink(f"{CONFIG_HOME}/k9s/mocha.yml", f"{CONFIG_TARGET}/k9s/skin.yml")
 
 
 timezone_label = "Europe/Paris"
