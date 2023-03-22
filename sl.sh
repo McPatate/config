@@ -23,6 +23,13 @@ ln -s $CONFIG_HOME/zsh/.zshrc ~/.zshrc
 rm $HOME/.config/Code/User/keybindings.json
 rm $HOME/.config/Code/User/settings.json
 
-ln -s $CONFIG_HOME/k9s/mocha.yml ~/.config/k9s/skin.yml
+ln -s $CONFIG_HOME/k9s/mocha.yml $HOME/.config/k9s/skin.yml
 ln -s $CONFIG_HOME/vscode/keybindings.json $HOME/.config/Code/User/keybindings.json
 ln -s $CONFIG_HOME/vscode/settings.json $HOME/.config/Code/User/settings.json
+
+# Linux - switch light and dark
+sudo ln -s /home/mc/Documents/config/systemd $HOME/.config/systemd
+loginctl enable-linger mc
+python3 -m pip install astral
+systemctl --user enable switch_light_dark.service
+systemctl --user start switch_light_dark.service
