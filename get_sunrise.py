@@ -1,12 +1,16 @@
+import os
 from astral import LocationInfo
 from astral.sun import sun
 from datetime import datetime, timedelta
+from pathlib import Path
 from pytz import timezone
 import subprocess
+import sys
 from time import sleep
 
 
 CONFIG_HOME = "/home/mc/Documents/config"
+CONFIG_TARGET = "/home/mc/.config"
 
 
 def replace_in_file(path: str, search: str, by: str):
@@ -22,20 +26,54 @@ def replace_in_file(path: str, search: str, by: str):
 
 def set_light():
     print("setting theme to light mode")
+    sys.stdout.flush()
+    subprocess.run(
+        ["gsettings", "set", "org.gnome.desktop.interface", "gtk-theme", ";'Pop'"]
+    )
+    subprocess.run(
+        [
+            "gsettings",
+            "set",
+            "org.gnome.desktop.interface",
+            "color-scheme",
+            "'prefer-light'",
+        ]
+    )
     replace_in_file(
-        f"{CONFIG_HOME}/alacritty/alacritty.yml", "base16-helios-256", "latte"
+        f"{CONFIG_HOME}/alacritty/alacritty.yml",
+        "base16-helios-256",
+        "catppuccin-latte",
     )
     replace_in_file(f"{CONFIG_HOME}/bat/config", "", '--theme="OneHalfLight"')
     replace_in_file(f"{CONFIG_HOME}/nvim/lua/plugins/colorscheme.lua", "mocha", "latte")
+    Path(f"{CONFIG_TARGET}/k9s/skin.yml").unlink(missing_ok=True)
+    os.symlink(f"{CONFIG_HOME}/k9s/latte.yml", f"{CONFIG_TARGET}/k9s/skin.yml")
 
 
 def set_dark():
     print("setting theme to dark mode")
-    replace_in_file(f"{CONFIG_HOME}/alacritty/alacritty.yml", "latte", "mocha")
-    replace_in_file(f"{CONFIG_HOME}/bat/config", '--theme="OneHalfLight"', "")
-    replace_in_file(
-        f"{CONFIG_HOME}/nvim/lua/plugins/colorscheme.lua", "latte", "base16-helios-256"
+    sys.stdout.flush()
+    subprocess.run(
+        ["gsettings", "set", "org.gnome.desktop.interface", "gtk-theme", "'Pop-dark'"]
     )
+    subprocess.run(
+        [
+            "gsettings",
+            "set",
+            "org.gnome.desktop.interface",
+            "color-scheme",
+            "'prefer-dark'",
+        ]
+    )
+    replace_in_file(
+        f"{CONFIG_HOME}/alacritty/alacritty.yml",
+        "catppuccin-latte",
+        "base16-helios-256",
+    )
+    replace_in_file(f"{CONFIG_HOME}/bat/config", '--theme="OneHalfLight"', "")
+    replace_in_file(f"{CONFIG_HOME}/nvim/lua/plugins/colorscheme.lua", "latte", "mocha")
+    Path("~/.config/k9s/skin.yml").unlink(missing_ok=True)
+    os.symlink(f"{CONFIG_HOME}/k9s/mocha.yml", "~/.config/k9s/skin.yml")
 
 
 timezone_label = "Europe/Paris"
@@ -47,6 +85,7 @@ print(
         f"Latitude: {city.latitude:.02f}; Longitude: {city.longitude:.02f}\n"
     )
 )
+sys.stdout.flush()
 
 while True:
     tz = timezone(timezone_label)
@@ -62,40 +101,19 @@ while True:
             f'Dusk:    {sun_today["dusk"]}\n'
         )
     )
+    sys.stdout.flush()
     if sun_today["sunrise"] <= current_time and current_time < sun_today["dusk"]:
-        subprocess.run(
-            ["gsettings", "set", "org.gnome.desktop.interface", "gtk-theme", "Pop"]
-        )
-        subprocess.run(
-            [
-                "gsettings",
-                "set",
-                "org.gnome.desktop.interface",
-                "color-scheme",
-                "prefer-light",
-            ]
-        )
-        secs_til_dusk = (sun_today["dusk"] - current_time).seconds
         set_light()
+        secs_til_dusk = (sun_today["dusk"] - current_time).seconds
         print(f"sleep for {secs_til_dusk}")
+        sys.stdout.flush()
         sleep(secs_til_dusk)
     else:
-        subprocess.run(
-            ["gsettings", "set", "org.gnome.desktop.interface", "gtk-theme", "Pop-dark"]
-        )
-        subprocess.run(
-            [
-                "gsettings",
-                "set",
-                "org.gnome.desktop.interface",
-                "color-scheme",
-                "prefer-dark",
-            ]
-        )
         set_dark()
         if current_time.hour < 12:
             secs_til_sunrise = (sun_today["sunrise"] - current_time).seconds
             print(f"sleep for {secs_til_sunrise}")
+            sys.stdout.flush()
             sleep(secs_til_sunrise)
         else:
             sun_tmrw = sun(
@@ -111,6 +129,8 @@ while True:
                     f'Dusk:    {sun_today["dusk"]}\n'
                 )
             )
+            sys.stdout.flush()
             secs_til_sunrise = (sun_tmrw["sunrise"] - current_time).seconds
             print(f"sleep for {secs_til_sunrise}")
+            sys.stdout.flush()
             sleep(secs_til_sunrise)
