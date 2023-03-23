@@ -5,7 +5,7 @@ After=network-online.target
 [Service]
 Type=simple
  
-ExecStart=python3 /home/mc/Documents/config/get_sunrise.py
+ExecStart=python3 /home/mc/Documents/config/switch_light_dark.py
  
 Restart=on-failure
  
