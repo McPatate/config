@@ -45,15 +45,15 @@ def set_light():
         "catppuccin-latte",
     )
     replace_in_file(f"{CONFIG_HOME}/bat/config", "ansi", "OneHalfLight")
-    replace_in_file(f"{CONFIG_HOME}/nvim/lua/plugins/colorscheme.lua", "mocha", "latte")
+    replace_in_file(
+        f"{CONFIG_HOME}/nvim/lua/plugins/colorscheme.lua", "vscode", "catppuccin-latte"
+    )
     Path(f"{CONFIG_TARGET}/k9s/skin.yml").unlink(missing_ok=True)
     os.symlink(f"{CONFIG_HOME}/k9s/latte.yml", f"{CONFIG_TARGET}/k9s/skin.yml")
     replace_in_file(
         f"{CONFIG_HOME}/git/.gitconfig-linux", "light = false", "light = true"
     )
-    replace_in_file(
-        f"{CONFIG_HOME}/lazygit/config.yml", "ansi", "OneHalfLight"
-    )
+    replace_in_file(f"{CONFIG_HOME}/lazygit/config.yml", "ansi", "OneHalfLight")
 
 
 def set_dark():
@@ -77,15 +77,15 @@ def set_dark():
         "base16-helios-256",
     )
     replace_in_file(f"{CONFIG_HOME}/bat/config", "OneHalfLight", "ansi")
-    replace_in_file(f"{CONFIG_HOME}/nvim/lua/plugins/colorscheme.lua", "latte", "mocha")
+    replace_in_file(
+        f"{CONFIG_HOME}/nvim/lua/plugins/colorscheme.lua", "catppuccin-latte", "vscode"
+    )
     Path(f"{CONFIG_TARGET}/k9s/skin.yml").unlink(missing_ok=True)
     os.symlink(f"{CONFIG_HOME}/k9s/mocha.yml", f"{CONFIG_TARGET}/k9s/skin.yml")
     replace_in_file(
         f"{CONFIG_HOME}/git/.gitconfig-linux", "light = true", "light = false"
     )
-    replace_in_file(
-        f"{CONFIG_HOME}/lazygit/config.yml", "OneHalfLight", "ansi"
-    )
+    replace_in_file(f"{CONFIG_HOME}/lazygit/config.yml", "OneHalfLight", "ansi")
 
 
 timezone_label = "Europe/Paris"

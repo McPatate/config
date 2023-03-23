@@ -1,9 +1,9 @@
 return {
-  -- { "RRethy/nvim-base16" },
+  { "Mofiqul/vscode.nvim" },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin-latte", -- "tokyonight-night",
+      colorscheme = "vscode", -- "tokyonight-night",
     },
   },
 }
