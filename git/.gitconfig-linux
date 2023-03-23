@@ -1,0 +1,31 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = Luc Georges
+	email = luc@huggingface.co
+	signingkey = 22924A120A2C2CE0
+[core]
+	editor = vi
+  pager = delta
+[credential]
+	helper = store
+[pull]
+	rebase = true
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true
+  light = true
+  line-numbers = true
+  side-by-side = true
+
+[merge]
+  conflictstyle = diff3
+
+[diff]
+  colorMoved = default

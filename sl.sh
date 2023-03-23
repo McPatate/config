@@ -26,6 +26,7 @@ rm $HOME/.config/Code/User/settings.json
 ln -s $CONFIG_HOME/k9s/mocha.yml $HOME/.config/k9s/skin.yml
 ln -s $CONFIG_HOME/vscode/keybindings.json $HOME/.config/Code/User/keybindings.json
 ln -s $CONFIG_HOME/vscode/settings.json $HOME/.config/Code/User/settings.json
+ln -s $CONFIG_HOME/git/.gitconfig-linux $HOME/.gitconfig
 
 # Linux - switch light and dark
 sudo ln -s /home/mc/Documents/config/systemd $HOME/.config/systemd
