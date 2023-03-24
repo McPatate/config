@@ -44,7 +44,7 @@ def set_light():
         "base16-helios-256",
         "catppuccin-latte",
     )
-    replace_in_file(f"{CONFIG_HOME}/bat/config", "ansi", "OneHalfLight")
+    replace_in_file(f"{CONFIG_HOME}/bat/config", "ansi", "GitHub")
     replace_in_file(
         f"{CONFIG_HOME}/nvim/lua/plugins/colorscheme.lua", "dark", "light"
     )
@@ -53,7 +53,8 @@ def set_light():
     replace_in_file(
         f"{CONFIG_HOME}/git/.gitconfig-linux", "light = false", "light = true"
     )
-    replace_in_file(f"{CONFIG_HOME}/lazygit/config.yml", "ansi", "OneHalfLight")
+    replace_in_file(f"{CONFIG_HOME}/lazygit/config.yml", "ansi", "GitHub")
+    replace_in_file(f"{CONFIG_HOME}/lazygit/config.yml", "false", "true")
 
 
 def set_dark():
@@ -76,7 +77,7 @@ def set_dark():
         "catppuccin-latte",
         "base16-helios-256",
     )
-    replace_in_file(f"{CONFIG_HOME}/bat/config", "OneHalfLight", "ansi")
+    replace_in_file(f"{CONFIG_HOME}/bat/config", "GitHub", "ansi")
     replace_in_file(
         f"{CONFIG_HOME}/nvim/lua/plugins/colorscheme.lua", "light", "dark"
     )
@@ -85,7 +86,8 @@ def set_dark():
     replace_in_file(
         f"{CONFIG_HOME}/git/.gitconfig-linux", "light = true", "light = false"
     )
-    replace_in_file(f"{CONFIG_HOME}/lazygit/config.yml", "OneHalfLight", "ansi")
+    replace_in_file(f"{CONFIG_HOME}/lazygit/config.yml", "GitHub", "ansi")
+    replace_in_file(f"{CONFIG_HOME}/lazygit/config.yml", "true", "false")
 
 
 timezone_label = "Europe/Paris"

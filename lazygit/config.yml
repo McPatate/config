@@ -1,5 +1,8 @@
 git:
   paging:
     colorArg: always
-    pager: delta --syntax-theme OneHalfLight --paging=never
+    pager: delta --syntax-theme GitHub --paging=never
 
+gui:
+  theme:
+    lightTheme: true 
