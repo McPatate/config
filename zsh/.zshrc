@@ -50,12 +50,12 @@ export PATH=$HOME/go/bin:$PATH
 
 # Base16 Shell
 
-BASE16_SHELL="$HOME/.config/base16-shell/"
-[ -n "$PS1" ] && \
-    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-        eval "$("$BASE16_SHELL/profile_helper.sh")"
+# BASE16_SHELL="$HOME/.config/base16-shell/"
+# [ -n "$PS1" ] && \
+#     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+#         eval "$("$BASE16_SHELL/profile_helper.sh")"
 
-base16_helios
+# base16_helios
 
 
 # fzf
@@ -63,6 +63,8 @@ base16_helios
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
+
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#000000,bg:#eff1f5,hl:#ad845e --color=fg+:#000000,bg+:#d9d9d9,hl+:#ff7300 --color=info:#808026,prompt:#d7005f,pointer:#8000ff --color=marker:#ff0000,spinner:#ff7300,header:#00a3a3'
 
 # Prompt
 

@@ -55,6 +55,7 @@ def set_light():
     )
     replace_in_file(f"{CONFIG_HOME}/lazygit/config.yml", "ansi", "GitHub")
     replace_in_file(f"{CONFIG_HOME}/lazygit/config.yml", "false", "true")
+    replace_in_file(f"{CONFIG_HOME}/zsh/.zshrc", "export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#ababab,bg:#1d2021,hl:#5f87af --color=fg+:#dbdbdb,bg+:#2e2e2e,hl+:#5fd7ff --color=info:#afaf87,prompt:#ff006f,pointer:#af5fff --color=marker:#87ff00,spinner:#af5fff,header:#87afaf'", "export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#000000,bg:#eff1f5,hl:#ad845e --color=fg+:#000000,bg+:#d9d9d9,hl+:#ff7300 --color=info:#808026,prompt:#d7005f,pointer:#8000ff --color=marker:#ff0000,spinner:#ff7300,header:#00a3a3'")
 
 
 def set_dark():
@@ -88,6 +89,7 @@ def set_dark():
     )
     replace_in_file(f"{CONFIG_HOME}/lazygit/config.yml", "GitHub", "ansi")
     replace_in_file(f"{CONFIG_HOME}/lazygit/config.yml", "true", "false")
+    replace_in_file(f"{CONFIG_HOME}/zsh/.zshrc", "export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#000000,bg:#eff1f5,hl:#ad845e --color=fg+:#000000,bg+:#d9d9d9,hl+:#ff7300 --color=info:#808026,prompt:#d7005f,pointer:#8000ff --color=marker:#ff0000,spinner:#ff7300,header:#00a3a3'", "export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#ababab,bg:#1d2021,hl:#5f87af --color=fg+:#dbdbdb,bg+:#2e2e2e,hl+:#5fd7ff --color=info:#afaf87,prompt:#ff006f,pointer:#af5fff --color=marker:#87ff00,spinner:#af5fff,header:#87afaf'")
 
 
 timezone_label = "Europe/Paris"
