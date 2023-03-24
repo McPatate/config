@@ -46,7 +46,7 @@ def set_light():
     )
     replace_in_file(f"{CONFIG_HOME}/bat/config", "ansi", "OneHalfLight")
     replace_in_file(
-        f"{CONFIG_HOME}/nvim/lua/plugins/colorscheme.lua", "vscode", "catppuccin-latte"
+        f"{CONFIG_HOME}/nvim/lua/plugins/colorscheme.lua", "dark", "light"
     )
     Path(f"{CONFIG_TARGET}/k9s/skin.yml").unlink(missing_ok=True)
     os.symlink(f"{CONFIG_HOME}/k9s/latte.yml", f"{CONFIG_TARGET}/k9s/skin.yml")
@@ -78,7 +78,7 @@ def set_dark():
     )
     replace_in_file(f"{CONFIG_HOME}/bat/config", "OneHalfLight", "ansi")
     replace_in_file(
-        f"{CONFIG_HOME}/nvim/lua/plugins/colorscheme.lua", "catppuccin-latte", "vscode"
+        f"{CONFIG_HOME}/nvim/lua/plugins/colorscheme.lua", "light", "dark"
     )
     Path(f"{CONFIG_TARGET}/k9s/skin.yml").unlink(missing_ok=True)
     os.symlink(f"{CONFIG_HOME}/k9s/mocha.yml", f"{CONFIG_TARGET}/k9s/skin.yml")

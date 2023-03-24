@@ -1,5 +1,10 @@
 return {
-  { "Mofiqul/vscode.nvim" },
+  {
+    "Mofiqul/vscode.nvim",
+    opts = {
+      style = "light",
+    },
+  },
   {
     "LazyVim/LazyVim",
     opts = {
