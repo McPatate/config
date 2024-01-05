@@ -6,6 +6,7 @@ alias la="exa -lagb --git --group-directories-first"
 alias grep="grep --color"
 
 alias v='nvim'
+export KUBE_EDITOR="nvim"
 
 alias ga='git add'
 alias gc='git checkout'

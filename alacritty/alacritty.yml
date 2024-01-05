@@ -6,8 +6,9 @@ shell:
 #     - "tmux attach || tmux"
 
 # Open a new window shortcut - Mac
-# key_bindings:
-# - { key: N, mods: Command, action: SpawnNewInstance }
+key_bindings:
+  - { key: Right, mods: Alt, chars: "\x1BF" }
+  - { key: Left,  mods: Alt, chars: "\x1BB" }
 
 import:
   - ~/.config/alacritty/catppuccin-latte.yml
@@ -15,20 +16,18 @@ import:
 font:
   size: 12
   normal:
-    family: InconsolataLGC Nerd Font
+    family: "InconsolataLGC Nerd Font"
     style: Regular
   bold:
-    family: InconsolataLGC Nerd Font
+    family: "InconsolataLGC Nerd Font"
     style: Bold
   italic:
-    family: InconsolataLGC Nerd Font
+    family: "InconsolataLGC Nerd Font"
     style: Italic
 
-window.opacity: 0.95
-
-key_bindings:
-  - { key: Up, mods: Control, action: None }
-  - { key: Down, mods: Control, action: None }
+window:
+  decorations: "None"
+  opacity: 0.95
 
 env:
   TERM: xterm-256color

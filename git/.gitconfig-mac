@@ -1,0 +1,44 @@
+[user]
+  name = Luc Georges
+  email = luc.sydney.georges@gmail.com
+  signgKey = 8A2B84C1466CDF50
+
+[init]
+    defaultBranch = trunk
+
+[filter "lfs"]
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+
+[commit]
+    gpgsign = true
+
+[submodule]
+    recurse = true
+
+[core]
+	editor = vi
+  pager = delta
+
+[credential]
+	helper = store
+
+[pull]
+	rebase = true
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true
+  light = false
+  line-numbers = true
+  side-by-side = true
+
+[merge]
+  conflictstyle = diff3
+
+[diff]
+  colorMoved = default
