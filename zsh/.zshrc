@@ -1,8 +1,8 @@
 # Aliases
 
 # alias rose="/usr/bin/arch -x86_64"
-alias ll="exa -lgb --git --group-directories-first"
-alias la="exa -lagb --git --group-directories-first"
+alias ll="lsd -lg --git --group-directories-first"
+alias la="lsd -lag --git --group-directories-first"
 alias grep="grep --color"
 
 alias v='nvim'
@@ -22,6 +22,41 @@ alias gst='git status'
 
 alias tf='terraform'
 
+# Mac Path
+export PATH=/Users/mc/Library/Python/3.9/bin:$PATH
+export PATH=/Applications/Julia-1.5.app/Contents/Resources/julia/bin:$PATH
+export PATH=/Users/mc/go/bin:$PATH
+export PATH=${KREW_ROOT:-$HOME/.krew}/bin:$PATH
+export PATH=/opt/homebrew/opt/llvm/bin:$PATH
+export PATH=/usr/local/clamav/bin:/usr/local/clamav/sbin:$PATH
+export PATH=/Users/mc/.deno/bin:$PATH
+export PATH=/Users/mc/Library/Python/3.9/bin:$PATH
+export PATH=/opt/homebrew/bin:$PATH
+
+# Paths
+
+export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$(npm config get prefix)/bin:$PATH
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+# Linux Path
+# export PATH=$HOME/.local/bin:$PATH
+# export PATH=/usr/local/go/bin:$PATH
+# export PATH=$HOME/go/bin:$PATH
+
+# autoload -Uz compinit
+#
+# compinit
+
+# Brew completions
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
+
 # Kitty
 # alias ssh='kitty +kitten ssh'
 # Completion for kitty
@@ -30,24 +65,6 @@ alias tf='terraform'
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Paths
-
-export PATH=$HOME/.cargo/bin:$PATH
-export PATH=$(npm config get prefix)/bin:$PATH
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-
-# Mac Path
-# export PATH=/Users/mc/Library/Python/3.8/bin:$PATH
-# export PATH=/Applications/Julia-1.5.app/Contents/Resources/julia/bin:$PATH
-# export PATH=/Users/mc/go/bin:$PATH
-# export PATH=${KREW_ROOT:-$HOME/.krew}/bin:$PATH
-# export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-
-# Linux Path
-export PATH=$HOME/.local/bin:$PATH
-export PATH=/usr/local/go/bin:$PATH
-export PATH=$HOME/go/bin:$PATH
 
 # Base16 Shell
 
@@ -61,19 +78,16 @@ export PATH=$HOME/go/bin:$PATH
 
 # fzf
 
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# source /usr/share/doc/fzf/examples/key-bindings.zsh
+# source /usr/share/doc/fzf/examples/completion.zsh
 
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#000000,bg:#eff1f5,hl:#ad845e --color=fg+:#000000,bg+:#d9d9d9,hl+:#ff7300 --color=info:#808026,prompt:#d7005f,pointer:#8000ff --color=marker:#ff0000,spinner:#ff7300,header:#00a3a3'
 
 # Prompt
 
 setopt PROMPT_SUBST
-
-autoload -Uz compinit vcs_info
-
-compinit
 
 # k8s stuff
 alias k=kubectl
@@ -85,7 +99,7 @@ alias keit='kubectl exec -it '
 alias kl='kubectl logs '
 alias klf='kubectl logs -f '
 source <(kubectl completion zsh)
-complete -F __start_kubectl k
+# complete -F __start_kubectl k
 
 # Completion for Molecule
 
@@ -127,4 +141,5 @@ setopt HIST_VERIFY               # Don't execute immediately upon history expans
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
 eval "$(starship init zsh)"
+
 

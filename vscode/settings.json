@@ -34,13 +34,41 @@
 	"rust-analyzer.inlayHints.parameterHints.enable": false,
 	"rust-analyzer.inlayHints.typeHints.enable": false,
 	"debug.allowBreakpointsEverywhere": true,
-	"window.zoomLevel": 1,
 	"vs-kubernetes": {
-		"vs-kubernetes.minikube-show-information-expiration": "2023-07-30T09:52:55.876Z"
+		"vs-kubernetes.minikube-show-information-expiration": "2023-10-09T10:37:25.585Z"
 	},
 	"[python]": {
 		"editor.formatOnType": true
 	},
-	"editor.inlineSuggest.enabled": true,
-	"editor.lineNumbers": "relative"
+	"editor.lineNumbers": "relative",
+	"refactai.apiKey": "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",
+	"refactai.infurl": "https://code-scratchpads.smallcloud.ai/",
+	"refactai.model": "bigcode/starcoder",
+	"refactai.pauseCompletion": false,
+	"llm.temperature": 0.2,
+	"llm.contextWindow": 8192,
+	"llm.tokensToClear": [
+		"<|endoftext|>"
+	],
+	"llm.fillInTheMiddle.middle": "<fim_middle>",
+	"llm.fillInTheMiddle.prefix": "<fim_prefix>",
+	"llm.fillInTheMiddle.suffix": "<fim_suffix>",
+	"llm.fillInTheMiddle.enabled": true,
+	"llm.lsp.logLevel": "info",
+	"llm.modelIdOrEndpoint": "http://localhost:4242",
+	"llm.tokenizer": {
+		"repository": "bigcode/starcoder"
+	},
+	"github.copilot.enable": {
+		"*": true,
+		"plaintext": false,
+		"markdown": true,
+		"scminput": false
+	},
+	"debug.showInlineBreakpointCandidates": false,
+	"llm.documentFilter": {
+		"pattern": "**"
+	},
+	"llm.lsp.binaryPath": "/Users/mc/Documents/work/extensions/llm-ls/target/release/llm-ls",
+	"zig.initialSetupDone": false,
 }

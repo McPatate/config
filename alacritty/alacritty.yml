@@ -1,5 +1,5 @@
 shell:
-  program: /usr/bin/zsh
+  program: /bin/zsh
 #   args:
 #     - -l
 #     - -c
@@ -27,7 +27,7 @@ font:
 
 window:
   decorations: "None"
-  opacity: 0.95
+  opacity: 0.75
 
 env:
   TERM: xterm-256color
