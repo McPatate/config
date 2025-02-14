@@ -20,7 +20,7 @@
 
 [delta]
   navigate = true
-  light = true
+  light = false
   line-numbers = true
   side-by-side = true
 

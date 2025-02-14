@@ -22,6 +22,8 @@ alias gst='git status'
 
 alias tf='terraform'
 
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+
 # Mac Path
 export PATH=/Users/mc/Library/Python/3.9/bin:$PATH
 export PATH=/Applications/Julia-1.5.app/Contents/Resources/julia/bin:$PATH
@@ -32,6 +34,7 @@ export PATH=/usr/local/clamav/bin:/usr/local/clamav/sbin:$PATH
 export PATH=/Users/mc/.deno/bin:$PATH
 export PATH=/Users/mc/Library/Python/3.9/bin:$PATH
 export PATH=/opt/homebrew/bin:$PATH
+export PATH=/usr/local/bin:$PATH
 
 # Paths
 
@@ -83,7 +86,7 @@ export NVM_DIR="$HOME/.nvm"
 # source /usr/share/doc/fzf/examples/key-bindings.zsh
 # source /usr/share/doc/fzf/examples/completion.zsh
 
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#000000,bg:#eff1f5,hl:#ad845e --color=fg+:#000000,bg+:#d9d9d9,hl+:#ff7300 --color=info:#808026,prompt:#d7005f,pointer:#8000ff --color=marker:#ff0000,spinner:#ff7300,header:#00a3a3'
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#ababab,bg:#1d2021,hl:#5f87af --color=fg+:#dbdbdb,bg+:#2e2e2e,hl+:#5fd7ff --color=info:#afaf87,prompt:#ff006f,pointer:#af5fff --color=marker:#87ff00,spinner:#af5fff,header:#87afaf'
 
 # Prompt
 
@@ -143,3 +146,5 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 eval "$(starship init zsh)"
 
 
+
+. "$HOME/.local/bin/env"

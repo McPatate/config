@@ -1,0 +1,36 @@
+import = ["/Users/mcpotato/.config/alacritty/base16-helios-256.toml"]
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 12
+
+[font.bold]
+family = "Inconsolata LGC Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "Inconsolata LGC Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "Inconsolata LGC Nerd Font"
+style = "Regular"
+
+[[keyboard.bindings]]
+chars = "\u001BF"
+key = "Right"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001BB"
+key = "Left"
+mods = "Alt"
+
+[shell]
+program = "/bin/zsh"
+
+[window]
+decorations = "None"
+opacity = 0.95

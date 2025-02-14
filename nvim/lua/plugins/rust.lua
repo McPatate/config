@@ -3,8 +3,16 @@ return {
     "Saecki/crates.nvim",
     event = { "BufRead Cargo.toml" },
     opts = {
-      src = {
-        cmp = { enabled = true },
+      completion = {
+        crates = {
+          enabled = true,
+        },
+      },
+      lsp = {
+        enabled = true,
+        actions = true,
+        completion = true,
+        hover = true,
       },
     },
   },
@@ -72,6 +80,20 @@ return {
                 command = "clippy",
                 extraArgs = { "--no-deps" },
               },
+              -- inlayHints = {
+              --   chainingHints = {
+              --     enable = false,
+              --   },
+              --   closingBraceHints = {
+              --     enable = false,
+              --   },
+              --   parameterHints = {
+              --     enable = false,
+              --   },
+              --   typeHints = {
+              --     enable = false,
+              --   },
+              -- },
               procMacro = {
                 enable = true,
                 ignored = {

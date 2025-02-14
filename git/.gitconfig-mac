@@ -4,7 +4,7 @@
   signgKey = 8A2B84C1466CDF50
 
 [init]
-    defaultBranch = trunk
+    defaultBranch = main
 
 [filter "lfs"]
     smudge = git-lfs smudge -- %f
@@ -42,3 +42,5 @@
 
 [diff]
   colorMoved = default
+[gpg]
+	program = gpg
